@@ -2,10 +2,12 @@ package basic;
 
 import java.util.List;
 
+import jserver.ColorNames;
+import ng_own.GameStateSerializer;
 import plotter.Sleep;
 
 public class Game {
-	static int sleepTime = 500;
+	static int sleepTime = 0; //original: 500
 	boolean pause = false;
 
 	Position position = new Position();
@@ -24,10 +26,12 @@ public class Game {
 	}
 
 	public static void setSleepTime(int sleepTime) {
-		Game.sleepTime = sleepTime;
+		//Game.sleepTime = sleepTime; //TODO: currently, do nothing
 	}
 
 	public Player play(Player[] players) {
+	    int colorIndicator = 1;
+
 		if (gui != null) {
 			position.setXsend(gui.getXsend());
 			gui.show(position);
@@ -46,6 +50,12 @@ public class Game {
 					return null;
 				}
 				Move move = player.nextMove(new Position( position ), moves);
+
+				// before anything is displayed or done with this move, persist current state for later analysis
+                // current state BEFORE move is saved, including PLANNED move
+                // correlation between current state and planned action will be available
+                GameStateSerializer.getInstance().serializeGameState(gui, player.getName(), ColorNames.getName(GUI.color(colorIndicator)), move);
+
 				position.move(move);
 				if (gui != null) {
 					Sleep.sleep(sleepTime);
@@ -57,6 +67,10 @@ public class Game {
 				}
 				position.nextPlayer();
 
+				if(colorIndicator == 1)
+				    colorIndicator = -1;
+				else
+				    colorIndicator = 1;
 			}
 
 		}

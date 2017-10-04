@@ -1,5 +1,7 @@
 package basic;
 
+import ng_own.GameStateSerializer;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
@@ -21,6 +23,7 @@ public class GameSimulator {
 	public GameSimulator() {
 		super();
 		gui = new GUI(this);
+        GameStateSerializer.getInstance().setFileDestination("C:\\Users\\Nils\\Desktop\\img\\");
 	}
 
 	public Game getGame() {

@@ -8,6 +8,11 @@ public class BrainlessPlayer extends Player {
 	private int myStone = 1;
 	private int empty = 0;
 
+    public BrainlessPlayer()
+    {
+        name = "BrainlessPlayer";
+    }
+
 	@Override
 	Move nextMove(Position p, List<Move> moves) {
 

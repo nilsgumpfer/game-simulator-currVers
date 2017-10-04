@@ -6,6 +6,11 @@ import java.util.Random;
 public class RandomPlayer extends Player {
 	Random random = new Random();
 
+    public RandomPlayer()
+    {
+        name = "RandomPlayer";
+    }
+
 	@Override
 	Move nextMove(Position p, List<Move> moves) {
 		return moves.get(random.nextInt(moves.size()));

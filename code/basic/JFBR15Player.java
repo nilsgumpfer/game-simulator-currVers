@@ -7,6 +7,12 @@ import java.util.List;
 public class JFBR15Player extends Player {
 	Move bestMove = null;
 	int searchDepth = 1;
+
+    public JFBR15Player()
+    {
+        name = "JFBR15Player";
+    }
+
 	@Override
 	Move nextMove(Position p, List<Move> moves) {
 		bestMove = moves.get(0);

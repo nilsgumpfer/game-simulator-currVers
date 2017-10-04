@@ -6,6 +6,11 @@ import plotter.Sleep;
 
 public class Human extends Player {
 
+    public Human()
+    {
+        name = "Human";
+    }
+
 	@Override
 	Move nextMove(Position p, List<Move> moves) {
 		while (true) {

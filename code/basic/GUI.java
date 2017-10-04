@@ -154,7 +154,7 @@ public class GUI implements ActionListener, ChangeListener {
 	}
 
 	private String moveDisplayHeader() {
-		String text = "Z�ge" + System.lineSeparator() ;
+		String text = "Züge" + System.lineSeparator() ;
 		text += ColorNames.getName( color(1)) + " - " + ColorNames.getName( color(-1)) + System.lineSeparator();
 		return text;
 	}
@@ -376,5 +376,7 @@ public class GUI implements ActionListener, ChangeListener {
 
 	}
 
-	
+    public Board getBoard() {
+        return board;
+    }
 }

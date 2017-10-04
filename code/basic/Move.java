@@ -16,5 +16,8 @@ public class Move {
 	public String toString() {
 		return "Move [s=" + s + "]";
 	}
-	
+
+    public int getS() {
+        return s;
+    }
 }

@@ -7,6 +7,11 @@ import java.util.Random;
 public class SucherSE extends Player {
 	Random random = new Random();
 
+    public SucherSE()
+    {
+        name = "SucherSE";
+    }
+
 	@Override
 	Move nextMove(Position p, List<Move> moves) {
 		// win with next move?

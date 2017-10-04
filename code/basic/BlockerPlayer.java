@@ -14,6 +14,11 @@ public class BlockerPlayer extends Player {
     private Helper helper = new Helper();
     private int mID = 0;
 
+    public BlockerPlayer()
+    {
+        name = "BlockerPlayer";
+    }
+
     @Override
     Move nextMove(Position p, List<Move> moves) {
 

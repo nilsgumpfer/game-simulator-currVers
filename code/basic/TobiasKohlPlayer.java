@@ -11,6 +11,11 @@ public class TobiasKohlPlayer extends Player {
 	Position p;
 	List<Move> moves;
 
+	public TobiasKohlPlayer()
+    {
+        name = "TobiasKohlPlayer";
+    }
+
 	@Override
 	Move nextMove(Position p, List<Move> moves) {
 		this.p = p;
