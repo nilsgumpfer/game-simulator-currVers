@@ -18,7 +18,7 @@ public class TextObject extends PlotObject {
 		this.text = text;
 		this.x = x;
 		this.y = y;
-		//System.out.println( "T: <" + text + ">");
+		////System.out.println( "T: <" + text + ">");
 	}
 
 	/**

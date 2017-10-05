@@ -24,17 +24,7 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import plotter.Graphic;
 import plotter.Plotter;
@@ -146,7 +136,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 			properties.load(stream);
 			stream.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("property file " + propertieFile + " not found");
+			//System.out.println("property file " + propertieFile + " not found");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -297,11 +287,11 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 		JComponent.setDefaultLocale(locale);
 
 		ResourceBundle bundle = ResourceBundle.getBundle("config/MessagesBundle", locale);
-		System.out.println( messages );
+		//System.out.println( messages );
 		if (verbose) {
-			System.out.println(locale);
-			System.out.println(bundle.getLocale());
-			System.out.println(bundle.getString("boardVersion"));
+			//System.out.println(locale);
+			//System.out.println(bundle.getLocale());
+			//System.out.println(bundle.getString("boardVersion"));
 		}
 
 		if (!locale.equals(bundle.getLocale())) {
@@ -373,7 +363,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 			InputStream stream;
 			stream = ClassLoader.getSystemClassLoader().getResourceAsStream(languagesFile);
 			if (stream == null) {
-				System.out.println("property file " + languagesFile + " not found");
+				//System.out.println("property file " + languagesFile + " not found");
 				languages.setProperty("Deutsch", "de_DE");
 				languages.setProperty("English (US)", "en_US");
 			} else {
@@ -450,7 +440,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 	 * @return okay or an error message
 	 */
 	public String receiveMessage(String line) {
-		// System.out.println( "receiveMessage: " + line);
+		// //System.out.println( "receiveMessage: " + line);
 		line = line.trim();
 		++messageCount;
 		String info = columns + "x" + rows + " " + messages.getString("board") + " , " + messages.getString("message")
@@ -484,7 +474,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 
 		if (line.startsWith("fonttype")) {
 			String type = line.substring("fonttype".length() + 1 );
-			System.out.println( ">>>" + type + "<<<" );
+			//System.out.println( ">>>" + type + "<<<" );
 			Symbol.setFontType(type);
 			redrawSymbols();
 			return "Okay";
@@ -555,7 +545,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 			}
 			SymbolType s = SymbolType.getTypeFromShortName(p[2]);
 			if (s == null) {
-				System.out.println("Error: unknown form: " + p[2]);
+				//System.out.println("Error: unknown form: " + p[2]);
 				return "Error: unknown form";
 			}
 			int index = Integer.parseInt(p[1]);
@@ -599,7 +589,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 
 		// resize form
 		if (line.startsWith("s ")) {
-			// System.out.println("Size: " + line);
+			// //System.out.println("Size: " + line);
 			int index = Integer.parseInt(p[1]);
 			if (index < 0 | index >= nSymbols) {
 				return "ERROR - " + index + " out of Range ";
@@ -809,10 +799,10 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 				change = updateSymbol(index, p[n + 1]) | change;
 			}
 			if (change) {
-				// System.out.print("+");
+				// //System.out.print("+");
 				graphic.repaint();
 			} else {
-				// System.out.print("-");
+				// //System.out.print("-");
 			}
 
 			return "okay";
@@ -858,7 +848,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 	public void actionPerformed(ActionEvent event) {
 		String cmd = event.getActionCommand();
 		if (verbose) {
-			System.out.println("Board cmd: " + cmd);
+			//System.out.println("Board cmd: " + cmd);
 		}
 
 		if (cmd.equals(clearColorsText)) {
@@ -886,7 +876,7 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 			fontSelector.setVisible(true);
 
 		} else if (cmd.equals(clearTextText)) {
-			System.out.println("Board:" + clearTextText);
+			//System.out.println("Board:" + clearTextText);
 			plotter.removeAllText();
 			for (Symbol s : symbols) {
 				s.setText(null);
@@ -902,10 +892,10 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 
 		} else if (cmd.equals(linNumberingText)) {
 			Symbol.setLinearNumbering(linNumberingItem.isSelected());
-			System.out.println(linNumberingText);
+			//System.out.println(linNumberingText);
 			if (Symbol.isNumbering()) {
 				plotter.removeAllText();
-				System.out.println("redraw after linNum change");
+				//System.out.println("redraw after linNum change");
 				redrawSymbols();
 			}
 
@@ -1176,23 +1166,23 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 		String message = "";
 		int x = e.getX();
 		int y = e.getY();
-		// System.out.println("Mouse released at " + x + ", " + y);
-		// System.out.println("# of clicks: " + e.getClickCount());
-		// System.out.println("# button: " + e.getButton());
+		// //System.out.println("Mouse released at " + x + ", " + y);
+		// //System.out.println("# of clicks: " + e.getClickCount());
+		// //System.out.println("# button: " + e.getButton());
 
 		double wx = plotter.scaleXR(x);
 		double wy = plotter.scaleYR(y);
-		// System.out.println("in world coordinates: " + wx + ", " + wy);
+		// //System.out.println("in world coordinates: " + wx + ", " + wy);
 		int ix = (int) (wx + 0.5);
 		int iy = (int) (wy + 0.5);
-		// System.out.println("col, row: " + ix + ", " + iy);
+		// //System.out.println("col, row: " + ix + ", " + iy);
 		int pos = ix + iy * columns;
 
 		for (int i = 0; i < e.getClickCount(); i++) {
 			message += "#";
 		}
 		message += " " + pos + " " + ix + " " + iy + " " + e.getButton();
-		// System.out.println(message);
+		// //System.out.println(message);
 		addCommand(message);
 
 		for (BoardClickListener bcl : boardClickListener) {
@@ -1259,20 +1249,19 @@ public class Board implements ActionListener, MouseListener, KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// System.out.println( e );
+		// //System.out.println( e );
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// System.out.println( e );
+		// //System.out.println( e );
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// System.out.println( e );
+		// //System.out.println( e );
 		String message = "$ " + e.getKeyCode() + " " + KeyEvent.getKeyText(e.getKeyCode());
-		// System.out.println(message);
+		// //System.out.println(message);
 		addCommand(message);
 	}
-
 }

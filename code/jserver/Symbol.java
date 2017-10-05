@@ -178,7 +178,7 @@ public class Symbol {
 	}
 
 	public void setHintergrund(Color hintergrund) {
-		// System.out.println("Hintergrund: " + hintergrund);
+		// //System.out.println("Hintergrund: " + hintergrund);
 		this.hintergrund = hintergrund;
 	}
 
@@ -286,7 +286,7 @@ public class Symbol {
 			if (useAlphaWithText && text.length() != 0) {
 				plotter.setDataColor(key, new Color(farbe.getRed(), farbe.getGreen(), farbe.getBlue(), alpha));
 			}
-			// System.out.println("Text:" + text );
+			// //System.out.println("Text:" + text );
 			// if (textObject == null) {
 			while (plotter.removeText(pos.x, pos.y))
 				;

@@ -23,7 +23,7 @@ public class BlockerPlayer extends Player {
     Move nextMove(Position p, List<Move> moves) {
 
         mID = helper.choose(p,moves);
-        System.out.println("Move done: "+mID);
+        //System.out.println("Move done: "+mID);
         return moves.get(mID);
     }
 
@@ -51,23 +51,23 @@ public class BlockerPlayer extends Player {
             int id = moves.size()/2;
             return moves.size()/2;
         }
-        System.out.println("em3: "+em3+" em2: "+em2+" em1: "+em1);
+        //System.out.println("em3: "+em3+" em2: "+em2+" em1: "+em1);
 
         if(em3 == em1){
             move = em1;
-            System.out.println("move 1: "+move);
+            //System.out.println("move 1: "+move);
         }else if (em2 == em1){
             move = em1;
-            System.out.println("move 2: "+move);
+            //System.out.println("move 2: "+move);
         }else if(em2 + 1 == em1 || em3 +1 == em1){
             move = em1+1;
-            System.out.println("move 3: "+move);
+            //System.out.println("move 3: "+move);
         }else if(em2 -1 == em1 || em3 -1 == em1){
             move = em1 -1;
-            System.out.println("move 4: "+move);
+            //System.out.println("move 4: "+move);
         }
 
-        System.out.println("BlaThingy: "+lastFieldCounter);
+        //System.out.println("BlaThingy: "+lastFieldCounter);
 
         if (lastFieldCounter >= 4){
             move = moves.size()/2;

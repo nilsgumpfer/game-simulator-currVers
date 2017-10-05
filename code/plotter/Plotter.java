@@ -350,7 +350,7 @@ public class Plotter extends JPanel {
 	/**
 	 * Set the color for the current data set.
 	 * 
-	 * @param c
+	 * @param
 	 *            color
 	 */
 	public void setDataColor(Color color) {
@@ -379,8 +379,8 @@ public class Plotter extends JPanel {
 	// if( backGroundColor == null ) {
 	// backGroundColor = defaultBackGroundColor;
 	// }
-	// System.out.println( "Background: " + backGroundColor);
-	// System.out.println( "Background: " + getBackground() );
+	// //System.out.println( "Background: " + backGroundColor);
+	// //System.out.println( "Background: " + getBackground() );
 	// }
 
 	public Color getBorderColor() {
@@ -568,15 +568,15 @@ public class Plotter extends JPanel {
 		// }
 
 		if (verbose > 1) {
-			System.out.println("PAINT");
-			System.out.println(getBackground());
+			//System.out.println("PAINT");
+			//System.out.println(getBackground());
 		}
 
 		int rectWidth = getSize().width - getInsets().left - getInsets().right;
 		int rectHeight = getSize().height - getInsets().top - getInsets().bottom;
-		// System.out.println("x: "
+		// //System.out.println("x: "
 		// + getSize().width+" "+getInsets().left+" "+getInsets().right);
-		// System.out.println("y: "
+		// //System.out.println("y: "
 		// + getSize().height+" "+getInsets().top+" "+getInsets().bottom);
 
 		plotLeft = (int) (rectWidth * xl) + getInsets().left;
@@ -640,25 +640,25 @@ public class Plotter extends JPanel {
 		synchronized (imageObjects) {
 			for (ImageObject imageOject : imageObjects) {
 				Image image = imageOject.image;
-				System.out.println("Image: " + image.getHeight(null) + " x " + image.getWidth(null));
+				//System.out.println("Image: " + image.getHeight(null) + " x " + image.getWidth(null));
 				if (imageOject.worldWidth > 0 | imageOject.worldHeight > 0) {
 					int newWidth = -1;
 					int newHeight = -1;
 					if (imageOject.worldWidth > 0) {
 						newWidth = Math.abs( scaleX(imageOject.worldWidth) - scaleX( 0. ) );
-						System.out.println( "W: " + imageOject.worldWidth + " -> " + newWidth );
+						//System.out.println( "W: " + imageOject.worldWidth + " -> " + newWidth );
 					}
 					if (imageOject.worldHeight > 0) {
 						newHeight = Math.abs( scaleY(imageOject.worldHeight) - scaleY( 0.) );
-						System.out.println( "H: " + imageOject.worldHeight + " -> " + newHeight );
+						//System.out.println( "H: " + imageOject.worldHeight + " -> " + newHeight );
 					}
 					image = imageOject.image.getScaledInstance(newWidth, newHeight, Image.SCALE_DEFAULT);
-					System.out.println("rescaled Image: " + newHeight + " x " + newWidth);
-					System.out.println("rescaled Image: " + image.getHeight(null) + " x " + image.getWidth(null));
+					//System.out.println("rescaled Image: " + newHeight + " x " + newWidth);
+					//System.out.println("rescaled Image: " + image.getHeight(null) + " x " + image.getWidth(null));
 				}
 				int x = scaleX(imageOject.getX()) - image.getWidth(null) / 2;
 				int y = scaleY(imageOject.getY()) - image.getHeight(null) / 2;
-				System.out.println("Pos: " + imageOject.getX() + ", " + imageOject.getY() + "-> " + x + "," + y);
+				//System.out.println("Pos: " + imageOject.getX() + ", " + imageOject.getY() + "-> " + x + "," + y);
 				g2.drawImage(image, x, y, null);
 			}
 		}
@@ -718,22 +718,22 @@ public class Plotter extends JPanel {
 
 			double[] tmpXVector = d.getData();
 			if (verbose > 1)
-				System.out.println("plotting  points");
+				//System.out.println("plotting  points");
 
 			if (d.hasBackground()) {
 				Point[] corners = d.getCorners();
 				// for (int i = 0; i < tmpXVector.length; i += 2) {
-				// System.out.println(tmpXVector[i] + " " + tmpXVector[i+1]
+				// //System.out.println(tmpXVector[i] + " " + tmpXVector[i+1]
 				// + " " + scaleX(tmpXVector[i]) + " " + scaleY(tmpXVector[i+1]
 				// ));
 				// }
 				int iw = scaleX(corners[1].x) - scaleX(corners[0].x);
 				int ih = scaleY(corners[1].y) - scaleY(corners[0].y);
-				// System.out.println(" iw: " + iw);
-				// System.out.println(corners[0].x + " " + corners[0].y + " " +
+				// //System.out.println(" iw: " + iw);
+				// //System.out.println(corners[0].x + " " + corners[0].y + " " +
 				// width + " x " + height);
 				Shape s = new Rectangle2D.Double(scaleX(corners[0].x), scaleY(corners[0].y), iw, ih);
-				// System.out.println( s );
+				// //System.out.println( s );
 				g2.setColor(d.getBackGroundColor());
 				g2.draw(s);
 				g2.fill(s);
@@ -873,7 +873,7 @@ public class Plotter extends JPanel {
 				}
 				ylabpos = scaleY(tO.getY()) - visualBounds.height / 2 - visualBounds.y;
 
-				// System.out.println(tO.getText() + " " +tO.getColor());
+				// //System.out.println(tO.getText() + " " +tO.getColor());
 				g2.setColor(tO.getColor());
 				g2.drawString(tO.getText(), xlabpos, ylabpos);
 				g2.setFont(currentFont); // restore default font
@@ -1255,12 +1255,12 @@ public class Plotter extends JPanel {
 	}
 
 	public void listDataObjects() {
-		System.out.println("---- currV: " + currV + " ----");
+		//System.out.println("---- currV: " + currV + " ----");
 		if (dataObjects.isEmpty()) {
-			System.out.println("no DataObjects");
+			//System.out.println("no DataObjects");
 		} else {
 			for (String key : dataObjects.keySet()) {
-				System.out.println(key + ": " + dataObjects.get(key));
+				//System.out.println(key + ": " + dataObjects.get(key));
 			}
 		}
 
@@ -1279,7 +1279,7 @@ public class Plotter extends JPanel {
 			for (Iterator<TextObject> it = textObjects.iterator(); it.hasNext();) {
 				String test = it.next().getText();
 				if (string.equals(test)) {
-					System.out.println(string + " == " + test);
+					//System.out.println(string + " == " + test);
 					it.remove();
 					return true;
 				}
@@ -1329,14 +1329,14 @@ public class Plotter extends JPanel {
 			DataObject d = dataObjects.get(key);
 			d.print();
 		} else {
-			System.out.println("No data object yet");
+			//System.out.println("No data object yet");
 		}
 	}
 
 	public void dumpTextObjects() {
 		synchronized (textObjects) {
 			for (Iterator<TextObject> it = textObjects.iterator(); it.hasNext();) {
-				System.out.println("<<<" + it.next().getText() + ">>>");
+				//System.out.println("<<<" + it.next().getText() + ">>>");
 			}
 		}
 	}

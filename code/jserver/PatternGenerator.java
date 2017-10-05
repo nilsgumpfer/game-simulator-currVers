@@ -62,8 +62,8 @@ public class PatternGenerator {
 
 	private void saveToFile() {
 		String filename = "pattern/p" + random.nextLong() + ".png";
-		board.getGraphic().saveImageToFile(filename);
-		System.out.println(filename + "  Hash: " + hashCode);
+		board.getGraphic().saveImageToFile(filename, true);
+		//System.out.println(filename + "  Hash: " + hashCode);
 	}
 
 	public void generate() {

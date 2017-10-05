@@ -28,7 +28,7 @@ public final class Vis
     double x[] = null;
     int i;
 
-    //System.out.println( "max = " + vmax( x ) );
+    ////System.out.println( "max = " + vmax( x ) );
     x = new double[1000000];
     Random r = new Random( 123 );
     Date start;
@@ -43,18 +43,18 @@ public final class Vis
       start = new Date();
       max = 0;
       for( j=0; j<iter; j++ ) max += vmax( x );
-      System.out.print( "max1 = " + max );
+      //System.out.print( "max1 = " + max );
       end = new Date();
       delta = (float) (end.getTime() - start.getTime() ) / (float) 1000;
-      System.out.println( " time1    = " + delta + "s" );
+      //System.out.println( " time1    = " + delta + "s" );
       
       start = new Date();
       max = 0;
       for( j=0; j<iter; j++ ) max += vmax2( x );
-      System.out.print( "max2 = " + max );
+      //System.out.print( "max2 = " + max );
       end = new Date();
       delta = (float) (end.getTime() - start.getTime() ) / (float) 1000;
-      System.out.println( " time2    = " + delta + "s" );
+      //System.out.println( " time2    = " + delta + "s" );
     }
  }
 
@@ -87,7 +87,7 @@ public final class Vis
   static void vprint( double vect[] ) {
     
     for( int i=0; i<vect.length; i++ ) {
-      System.out.println( i +": " + vect[i]);
+      //System.out.println( i +": " + vect[i]);
     }
   }
 
@@ -103,7 +103,7 @@ public final class Vis
 	    }
 	    dout.close();
 	} catch( Exception ex ) {
-	    System.out.println( "Can not open file " + fileName );
+	    //System.out.println( "Can not open file " + fileName );
 	}
     }
 
@@ -112,7 +112,7 @@ public final class Vis
   static void vprint( int vect[] ) {
     
     for( int i=0; i<vect.length; i++ ) {
-      System.out.println( i +": " + vect[i]);
+      //System.out.println( i +": " + vect[i]);
     }
   }
 
@@ -203,7 +203,7 @@ public final class Vis
 	
 	for( int i=0; i<vect.length; i++ ) {
 	    if( vect[i] < wert & vect[i] != ex ) {
-		//System.out.print( we
+		////System.out.print( we
 		wert = vect[i];
 	    }
 	}

@@ -37,7 +37,7 @@ public class GDemo extends JFrame
 	}
 
 	public GDemo(String string) {
-		System.out.println("creating  GDemo ");
+		//System.out.println("creating  GDemo ");
 		setName(string);
 		setTitle(string);
 		setSize(xsize, ysize);
@@ -47,7 +47,7 @@ public class GDemo extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
-		System.out.println("Graphic completed ");
+		//System.out.println("Graphic completed ");
 	}
 
 	/**
@@ -65,7 +65,7 @@ public class GDemo extends JFrame
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					String s = e.getActionCommand();
-					System.out.println( s );
+					//System.out.println( s );
 					ThreadPlot tp = new ThreadPlot();
 					tp.setMode(indexOf( s ));
 					new Thread(tp).start();

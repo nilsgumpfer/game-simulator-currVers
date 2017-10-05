@@ -43,9 +43,9 @@ public class Game {
 					Sleep.sleep(100);
 				}
 				List<Move> moves = position.getMoves();
-				// System.out.println(moves);
+				// //System.out.println(moves);
 				if (moves.isEmpty()) {
-					//System.out.println("No more moves");
+					////System.out.println("No more moves");
 					// No winner
 					return null;
 				}
@@ -62,11 +62,12 @@ public class Game {
 					gui.show(position);
 				}
 				if (position.isWin()) {
-					//System.out.println("Win: " + move);
+					////System.out.println("Win: " + move);
 					return player;
 				}
 				position.nextPlayer();
 
+				//used for toggling between both colors
 				if(colorIndicator == 1)
 				    colorIndicator = -1;
 				else

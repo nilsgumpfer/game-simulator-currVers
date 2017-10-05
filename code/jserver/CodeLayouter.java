@@ -18,7 +18,7 @@ public class CodeLayouter {
 	 */
 	public  String autoLayout( String code ) {
 		String[] lines = code.split("\n", -1);
-		//System.out.println("#lines: " + lines.length);
+		////System.out.println("#lines: " + lines.length);
 		
 		int indent = 0;
 		int state = 0;
@@ -30,7 +30,7 @@ public class CodeLayouter {
 			}
 			line = line.trim();
 			int incIndent = 0;   // additional increment for next lines
-			//System.out.println( "<" + line + ">");
+			////System.out.println( "<" + line + ">");
 			lineLoop: for (int i = 0; i < line.length(); i++) {
 				switch (state) {
 				case 0:

@@ -192,11 +192,11 @@ public class DataObject extends PlotObject {
 	}
 
 	public void print() {
-		System.out.println("******** DUMP DataObject ***********");
+		//System.out.println("******** DUMP DataObject ***********");
 		for (Point p : points) {
-			System.out.println(p.x + " " + p.y);
+			//System.out.println(p.x + " " + p.y);
 		}
-		System.out.println("******** ********* ***********");
+		//System.out.println("******** ********* ***********");
 
 	}
 

@@ -30,7 +30,7 @@ public class FilePlotter {
 	public static void main(String[] args) {
 		FilePlotter fp = new FilePlotter();
 		String fileName = "test.txt";
-		System.out.println(Arrays.toString(args));
+		//System.out.println(Arrays.toString(args));
 
 		if (args.length > 0)
 			fileName = args[args.length - 1];
@@ -44,7 +44,7 @@ public class FilePlotter {
 			FileReader fr = new FileReader(fileName);
 			lnr = new LineNumberReader(fr);
 		} catch (FileNotFoundException ex) {
-			System.out.println(fileName + " not found");
+			//System.out.println(fileName + " not found");
 			System.exit(1);
 		}
 
@@ -69,7 +69,7 @@ public class FilePlotter {
 			Scanner scanner = new Scanner(line);
 			scanner.useLocale(Locale.US);
 
-			System.out.println(line);
+			//System.out.println(line);
 			if (line.startsWith("#linestyle")) {
 				String[] parts = line.split(" +", 2);
 				LineStyle ls = LineStyle.getLineStyleByName(parts[1]);
@@ -86,19 +86,19 @@ public class FilePlotter {
 				scanner.next();
 				double min = scanner.nextDouble();
 				double max = scanner.nextDouble();
-				System.out.println("new range: " + min + " - " + max);
+				//System.out.println("new range: " + min + " - " + max);
 				plotter.setRange(min, max);
 			} else if (line.startsWith("#xrange")) {
 				scanner.next();
 				double min = scanner.nextDouble();
 				double max = scanner.nextDouble();
-				System.out.println("new range: " + min + " - " + max);
+				//System.out.println("new range: " + min + " - " + max);
 				plotter.setXrange(min, max);
 			} else if (line.startsWith("#yrange")) {
 				scanner.next();
 				double min = scanner.nextDouble();
 				double max = scanner.nextDouble();
-				System.out.println("new range: " + min + " - " + max);
+				//System.out.println("new range: " + min + " - " + max);
 				plotter.setYrange(min, max);
 			} else if (line.startsWith("#xline")) {
 				scanner.next();
@@ -110,7 +110,7 @@ public class FilePlotter {
 				plotter.setYLine(y);
 			} else if (line.equals("#xy")) {
 				xyMode = true;
-				System.out.println("Switch to xy-mode");
+				//System.out.println("Switch to xy-mode");
 			} else {
 				while (scanner.hasNextDouble()) {
 					if (xyMode) {

@@ -44,9 +44,9 @@ public class JServer implements Runnable {
 			@SuppressWarnings("resource")
 			ServerSocket socket = new ServerSocket(port, backlog);
 			for (;;) {
-				System.out.println("Waiting for next connection... ");
+				//System.out.println("Waiting for next connection... ");
 				Socket sockConnected = socket.accept();
-				System.out.println("Connected with " + sockConnected);
+				//System.out.println("Connected with " + sockConnected);
 				logger.info("Connected with " + sockConnected);
 				PrintStream ps = new PrintStream(sockConnected.getOutputStream());
 
@@ -55,11 +55,11 @@ public class JServer implements Runnable {
 				String line = getLine(isr);
 
 				if (line == null) {
-					System.out.println("No data read!!");
+					//System.out.println("No data read!!");
 					logger.info("No data read!!");
 
 				} else {
-					System.out.println("> " + line);
+					//System.out.println("> " + line);
 					logger.info(line);
 					if (line.startsWith("GET")) {
 						ps.print("Hallo");
@@ -74,7 +74,7 @@ public class JServer implements Runnable {
 				}
 				isr.close();
 				ps.close();
-				System.out.println("closing socket");
+				//System.out.println("closing socket");
 				sockConnected.close();
 			}
 

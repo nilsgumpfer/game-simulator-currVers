@@ -34,15 +34,15 @@ public class Match {
 			
 			Game game = new Game();
 			Player winner = game.play(players);
-			System.out.println(p1 + " - " + p2 + " Winner:" + winner);
-			System.out.println( game.getPosition().showHistory() );
+			//System.out.println(p1 + " - " + p2 + " Winner:" + winner);
+			//System.out.println( game.getPosition().showHistory() );
 			if (winner == null) {
 				scores.put(p1, scores.get(p1) + 1);
 				scores.put(p2, scores.get(p2) + 1);
 			} else {
 				scores.put(winner, scores.get(winner) + 2);
 			}
-			//System.out.println(scores);
+			////System.out.println(scores);
 		}		
 		return scores;
 	}

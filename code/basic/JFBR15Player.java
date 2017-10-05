@@ -47,7 +47,7 @@ public class JFBR15Player extends Player {
 				}
 			}
 			if(searchDepth == depth){
-				System.out.println(rootMoves);
+				//System.out.println(rootMoves);
 			}
 			return bestValue;
 		} else {

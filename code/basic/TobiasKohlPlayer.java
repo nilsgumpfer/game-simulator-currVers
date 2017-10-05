@@ -94,7 +94,7 @@ public class TobiasKohlPlayer extends Player {
 				if (o > chance) {
 					chance = o;
 					currentMove = f;
-					System.out.println("Chance:" + chance + "und o" + o + "bei move" + currentMove + "und f" + f);
+					//System.out.println("Chance:" + chance + "und o" + o + "bei move" + currentMove + "und f" + f);
 				}
 			}
 
