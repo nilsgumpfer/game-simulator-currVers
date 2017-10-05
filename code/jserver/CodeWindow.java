@@ -179,7 +179,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 		properties = board.getProperties();
 		messages = board.getMessages();
 		Locale locale = messages.getLocale();
-		System.out.println("CodeWindow: got " + locale.getLanguage());
+		//System.out.println("CodeWindow: got " + locale.getLanguage());
 		setStrings();
 
 		board.setFilterMode(true);
@@ -290,7 +290,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 			properties.setProperty("codeDir", fileOpenDirectory);
 			board.saveProperties();
 			String filename = chooser.getSelectedFile().getAbsolutePath();
-			// System.out.println(filename);
+			// //System.out.println(filename);
 			return filename;
 		} else {
 			return null;
@@ -357,7 +357,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 		getContentPane().add(contents, BorderLayout.CENTER);
 		// pack();
 		setVisible(true);
-		System.out.println(this.getClass().getName() + " completed ");
+		//System.out.println(this.getClass().getName() + " completed ");
 
 	}
 
@@ -392,7 +392,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 		String lastSnippetName = properties.getProperty("snippetName");
 		snippetSelector.setSelectedIndex(-1);
 		if( lastSnippetName != null ) {
-			System.out.println( "Try snippet " + lastSnippetName );
+			//System.out.println( "Try snippet " + lastSnippetName );
 			if( codeDB.hasSnippet(lastSnippetName)  ) {
 				codeInput.setText(codeDB.getSnippetCode(lastSnippetName) );
 				for( int j=0; j<snippetSelector.getItemCount(); j++ ) {
@@ -648,7 +648,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		String cmd = event.getActionCommand();
-		System.out.println("CodeWindow cmd: " + cmd);
+		//System.out.println("CodeWindow cmd: " + cmd);
 
 		if (cmd.equals(runText)) {
 			if (resetOnStart) {
@@ -698,7 +698,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 			}
 			JComboBox<String> cb = (JComboBox<String>) event.getSource();
 			String selectedSnippetName = (String) cb.getSelectedItem();
-			//System.out.println("combo: " + selectedSnippetName);
+			////System.out.println("combo: " + selectedSnippetName);
 			codeInput.setText(codeDB.getSnippetCode(selectedSnippetName));
 			snippetName = selectedSnippetName;
 			// snippetNameLabel.setText(clipText(snippetName, 15));
@@ -1005,7 +1005,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 			messageField.setText("compile ...\n");
 			codeExecutor.setMessageField(messageField);
 			String fileName = codeExecutor.createTmpSourceFile(codeInput.getText());
-			System.out.println("CodeRunner fileName: " + fileName);
+			//System.out.println("CodeRunner fileName: " + fileName);
 			if (fileName == null) {
 				result += "ERROR " + board.getLastError();
 				failedCompilation();
@@ -1015,7 +1015,7 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 
 			int maxLength = 5000;
 			if (result.length() > maxLength) {
-				System.out.println("Result too long: " + result.length());
+				//System.out.println("Result too long: " + result.length());
 				result = "... \n" + result.substring(result.length() - maxLength);
 				// result = "zu viele Zeilen \n";
 			}
@@ -1046,20 +1046,20 @@ public class CodeWindow extends JFrame implements ActionListener, DocumentListen
 
 	@Override
 	public void changedUpdate(DocumentEvent arg0) {
-		// System.out.println("changedUpdate");
+		// //System.out.println("changedUpdate");
 		codeChanged();
 	}
 
 	@Override
 	public void insertUpdate(DocumentEvent arg0) {
-		// System.out.println("insertUpdate");
+		// //System.out.println("insertUpdate");
 		codeChanged();
 
 	}
 
 	@Override
 	public void removeUpdate(DocumentEvent arg0) {
-		// System.out.println("removeUpdate");
+		// //System.out.println("removeUpdate");
 		codeChanged();
 	}
 

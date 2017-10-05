@@ -69,7 +69,7 @@ public enum LineStyle {
 
 	public static LineStyle getLineStyleByName(String string) {
 		for (LineStyle ls : LineStyle.values()) {
-			//System.out.println(ls.toString());
+			////System.out.println(ls.toString());
 			if (string.equals(ls.toString().toLowerCase())) {
 				return ls;
 			}

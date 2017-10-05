@@ -207,12 +207,12 @@ public class CodeDB {
 		NodeList snippets = document.getElementsByTagName("snippet");
 		for (int i = 0; i < snippets.getLength(); i++) {
 			Element s = (Element) snippets.item(i);
-			System.out.println(s.getAttribute("name"));
+			//System.out.println(s.getAttribute("name"));
 			NodeList children = s.getChildNodes();
 			for (int j = 0; j < children.getLength(); j++) {
 				Node c = children.item(j);
 				if ("code".equals(c.getNodeName())) {
-					System.out.println("   -> old");
+					//System.out.println("   -> old");
 					Element c2 = document.createElement("codeA");
 					CDATASection cdata = document.createCDATASection("\n" + c.getTextContent() + "\n");
 					c2.appendChild(cdata);
@@ -238,7 +238,7 @@ public class CodeDB {
 			Node c = children.item(j);
 			if ("codeA".equals(c.getNodeName())) {
 				Node n = c.getLastChild();
-				System.out.println("Node type: " + n.getNodeType() + " " + n.getNodeName());
+				//System.out.println("Node type: " + n.getNodeType() + " " + n.getNodeName());
 				CDATASection section = (CDATASection) c.getLastChild();
 				return section.getTextContent();
 				// geht auch

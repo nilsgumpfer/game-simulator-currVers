@@ -42,13 +42,47 @@ public class GameSimulator {
 	}
 
 	public Position singleGameGUI( Player[] players ) {
+        /*
+        game = new Game();
+        game.setGui(gui);
+        Player winner = game.play(players);
+        //System.out.println("Winner:" + winner);
+        //gui.setText("Winner:" + winner);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
 
-		game = new Game();
-		game.setGui(gui);
-		Player winner = game.play(players);
-		System.out.println("Winner:" + winner);
-		//gui.setText("Winner:" + winner);
-		
+        String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
+                "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
+
+        int currentIndex = 0;
+
+        for(int i=0; i<100; i++)
+        {
+            Player playerRed = playerFromName("CCPlayer");
+            Player playerBlue = playerFromName(allPlayerNames[currentIndex]);
+
+            Player[] myPlayers = {playerRed, playerBlue};
+
+            game = new Game();
+            game.setGui(gui);
+
+            System.out.println(playerRed.getName() + " vs. " + playerBlue.getName());
+
+            Player winner = game.play(myPlayers);
+
+            System.out.println("Winner:" + winner);
+
+            try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
+
+            currentIndex++;
+
+            if(currentIndex == allPlayerNames.length)
+                currentIndex = 0;
+        }
+
 		return game.getPosition();
 	}
 
@@ -67,11 +101,11 @@ public class GameSimulator {
 			Game game = new Game();
 			game.setGui(gui);
 			Player winner = game.play(players);
-			System.out.println("Winner:" + winner);
+			//System.out.println("Winner:" + winner);
 			if (winner != null) {
 				scores.put(winner, scores.get(winner) + 1);
 			}
-			System.out.println("Scores:" + scores);
+			//System.out.println("Scores:" + scores);
 		}
 
 	}
@@ -126,7 +160,7 @@ public class GameSimulator {
 				Match match = new Match(players[i], players[j], competionSetup.getNumGames() );
 				Map<Player, Integer> scores = match.play();
 
-				System.out.println(scores);
+				//System.out.println(scores);
 				players[i].addScore(players[j], scores.get(players[i]));
 				players[j].addScore(players[i], scores.get(players[j]));
 			}
@@ -138,7 +172,7 @@ public class GameSimulator {
 		PrintStream ps = new PrintStream(os);
 		showTable(players, ps);
 		String output = os.toString();
-		System.out.print( output );
+		//System.out.print( output );
 		return output;
 	}
 

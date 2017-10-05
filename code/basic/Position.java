@@ -200,9 +200,9 @@ public class Position {
 	public void print() {
 		for (int y = N - 1; y > 0; y--) {
 			for (int x = 1; x <= N; x++) {
-				System.out.print(board[x][y] + " ");
+				//System.out.print(board[x][y] + " ");
 			}
-			System.out.println();
+			//System.out.println();
 		}
 
 	}
@@ -227,7 +227,7 @@ public class Position {
 		try {
 			lines = Files.readAllLines(Paths.get(filename));
 			for (String line : lines) {
-				System.out.println("line read: " + line);
+				//System.out.println("line read: " + line);
 				move(new Move(line));
 				nextPlayer();
 			}

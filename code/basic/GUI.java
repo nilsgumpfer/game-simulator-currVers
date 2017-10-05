@@ -64,7 +64,7 @@ public class GUI implements ActionListener, ChangeListener {
 	private Position position;
 	private CompetionSetup competionSetup = new CompetionSetup();
 	private String fileOpenDirectory;
-	private Properties properties;;
+	private Properties properties;
 
 	public GUI(GameSimulator gameSimulator) {
 		this.gameSimulator = gameSimulator;
@@ -160,6 +160,7 @@ public class GUI implements ActionListener, ChangeListener {
 	}
 
 	public void show(Position p) {
+
 		position = p;
 		setStatusText(p);
 		for (int x = 1; x <= N; x++) {
@@ -176,7 +177,6 @@ public class GUI implements ActionListener, ChangeListener {
 			xsend.text2(x, 0, "" + x);
 		}
 		moveDisplay.setText( moveDisplayHeader() + p.showHistoryTable() );
-
 	}
 
 	@Override
@@ -184,7 +184,7 @@ public class GUI implements ActionListener, ChangeListener {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 			int sleepTime = (int) source.getValue();
-			System.out.println("SleepTime_: " + sleepTime);
+			//System.out.println("SleepTime_: " + sleepTime);
 			Game.setSleepTime(sleepTime);
 		}
 
@@ -194,7 +194,7 @@ public class GUI implements ActionListener, ChangeListener {
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
 		if (verbose) {
-			System.out.println("GUI cmd: " + cmd);
+			//System.out.println("GUI cmd: " + cmd);
 		}
 
 		if (cmd.startsWith("s1:")) {
@@ -297,10 +297,10 @@ public class GUI implements ActionListener, ChangeListener {
 				@Override
 				public void itemStateChanged(ItemEvent e) {
 					if (e.getStateChange() == ItemEvent.SELECTED) {
-						System.out.println("add " + p);
+						//System.out.println("add " + p);
 						competionSetup.add(p);
 					} else {
-						System.out.println("remove " + p);
+						//System.out.println("remove " + p);
 						competionSetup.remove(p);
 					}
 				}
@@ -310,7 +310,7 @@ public class GUI implements ActionListener, ChangeListener {
 		int ret = JOptionPane.showConfirmDialog(null, panel, "Replace", JOptionPane.OK_CANCEL_OPTION);
 		competionSetup.setNumGames(Integer.parseInt(numGamesField.getText()));
 		competionSetup.setNumCopies(Integer.parseInt(numCopiesField.getText()));
-		System.out.println(competionSetup.getNumGames());
+		//System.out.println(competionSetup.getNumGames());
 		return ret;
 	}
 
@@ -368,7 +368,7 @@ public class GUI implements ActionListener, ChangeListener {
 			properties.setProperty("saveDir", fileOpenDirectory);
 			board.saveProperties();
 			String filename = chooser.getSelectedFile().getAbsolutePath();
-			// System.out.println(filename);
+			// //System.out.println(filename);
 			return filename;
 		} else {
 			return null;
@@ -379,4 +379,5 @@ public class GUI implements ActionListener, ChangeListener {
     public Board getBoard() {
         return board;
     }
+
 }

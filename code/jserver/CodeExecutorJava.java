@@ -29,7 +29,7 @@ public class CodeExecutorJava extends CodeExecutor {
 	// public static void main(String[] args) {
 	// CodeExecutorJava ce = new CodeExecutorJava();
 	// ce.createTmpSourceFile("");
-	// System.out.println(ce.compileAndExecute(""));
+	// //System.out.println(ce.compileAndExecute(""));
 	// }
 
 	public CodeExecutorJava(Board world) {
@@ -51,9 +51,9 @@ public class CodeExecutorJava extends CodeExecutor {
 
 	@Override
 	public void stopExecution() {
-		// System.out.println("CodeExcecutorJava::stopExecution");
+		// //System.out.println("CodeExcecutorJava::stopExecution");
 		if (sendThread != null) {
-			// System.out.println("CodeExcecutorJava::send interrupt");
+			// //System.out.println("CodeExcecutorJava::send interrupt");
 			sendThread.interrupt();
 		}
 	}
@@ -63,7 +63,7 @@ public class CodeExecutorJava extends CodeExecutor {
 		StringBuffer result = new StringBuffer();
 		String line;
 
-		System.out.println("compileAndExecute fileName: " + fileName);
+		//System.out.println("compileAndExecute fileName: " + fileName);
 		boolean hasErrors = false;
 
 		File jarTest = new File("jserver.jar");
@@ -81,16 +81,16 @@ public class CodeExecutorJava extends CodeExecutor {
 		// Compile source file.
 		// System.setProperty("java.home",
 		// "C:\\Program Files\\Java\\jdk1.7.0_17");
-		// System.out.println(System.getProperty("java.home"));
+		// //System.out.println(System.getProperty("java.home"));
 		// JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-		// System.out.println( compiler );
+		// //System.out.println( compiler );
 		// compiler.run(null, null, null, fileName);
 		//
 
 		ProcessBuilder pb;
-		// System.out.println( "Path to javac: " + javacPath );
+		// //System.out.println( "Path to javac: " + javacPath );
 		String classPath = "." + File.pathSeparatorChar + "jserver.jar";
-		// System.out.println( "classpath: " + classPath );
+		// //System.out.println( "classpath: " + classPath );
 		pb = new ProcessBuilder(javacPath + "javac", "-cp", classPath, fileName);
 		for (ExecutorListener el : listeners) {
 			el.startCompilation();
@@ -101,7 +101,7 @@ public class CodeExecutorJava extends CodeExecutor {
 			// BufferedReader input = new BufferedReader(new InputStreamReader(
 			// p.getInputStream()));
 			// while ((line = input.readLine()) != null) {
-			// System.out.println(line);
+			// //System.out.println(line);
 			// }
 			// input.close();
 
@@ -129,7 +129,7 @@ public class CodeExecutorJava extends CodeExecutor {
 			}
 			return result.toString();
 		} else {
-			messageField.append("ausführen \n");
+			messageField.append("ausfï¿½hren \n");
 		}
 
 		for (ExecutorListener el : listeners) {
@@ -154,11 +154,11 @@ public class CodeExecutorJava extends CodeExecutor {
 						xsend.send();
 						command = xsend.getResult();
 						if (!command.matches("(okay)+")) {
-							System.out.println(command);
+							//System.out.println(command);
 							sb.append(command);
 						}
 					} catch (InterruptedException e) {
-						command = "Ausführung unterbrochen";
+						command = "Ausfï¿½hrung unterbrochen";
 					} catch (Exception |  Error e) {
 						// copy message so that it appears in the result field
 						e.printStackTrace(System.out);
@@ -240,11 +240,11 @@ public class CodeExecutorJava extends CodeExecutor {
 			fw.close();
 		} catch (IOException e) {
 			board.setLastError("can not complete file <<" + e.getMessage() + ">>");
-			System.out.println("cancel createTmpCFile: " + e.getMessage());
+			//System.out.println("cancel createTmpCFile: " + e.getMessage());
 			return null;
 		}
 
-		System.out.println("created " + fileName);
+		//System.out.println("created " + fileName);
 
 		return fileName;
 	}
@@ -284,7 +284,7 @@ public class CodeExecutorJava extends CodeExecutor {
 		template += "// methode to start with"+ System.lineSeparator();
 		template += "void mySend() {"+ System.lineSeparator();
 		template += "	// replace with own code"+ System.lineSeparator();
-		template += "	System.out.println(\"BoS\");"+ System.lineSeparator();
+		template += "	//System.out.println(\"BoS\");"+ System.lineSeparator();
 		template += "}"+ System.lineSeparator();
 		return template;
 	}

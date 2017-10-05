@@ -164,7 +164,7 @@ public class Trainer extends JFrame implements ActionListener {
 		pack();
 		xsa.loeschen();
 		xsa.formen("c");
-		System.out.println("Trainer: " + board);
+		//System.out.println("Trainer: " + board);
 		board.receiveMessage(Board.FILTER_PREFIX + "clearAllText");
 
 		String dirName = "pattern";
@@ -188,11 +188,11 @@ public class Trainer extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String cmd = e.getActionCommand();
-		System.out.println("CodeWindow cmd: " + cmd);
+		//System.out.println("CodeWindow cmd: " + cmd);
 
 		if (cmd.equals(checkText)) {
 			int dest = board.getHashCode();
-			System.out.println(hashCode + " " + dest);
+			//System.out.println(hashCode + " " + dest);
 			++attempts;
 			if (hashCode == dest) {
 				++hits;

@@ -44,11 +44,11 @@ public class CodeExecutorPython extends CodeExecutor {
 		// String className = "jserver.XSend" + language;
 		// String[] methods = MethodExtractor.getMethodsJS(className, xName);
 		//
-		// System.out.println( className );
+		// //System.out.println( className );
 		//
 		// code = "";
 		// for (String method : methods) {
-		// //System.out.println( method );
+		// ////System.out.println( method );
 		// code += method + "\n";
 		// }
 
@@ -120,12 +120,12 @@ public class CodeExecutorPython extends CodeExecutor {
 			Process executionProzess = pbRun.start();
 			final InputStream is = executionProzess.getInputStream();
 
-			System.out.println("Started execution process");
+			//System.out.println("Started execution process");
 
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
-					System.out.println("Start reader thread");
+					//System.out.println("Start reader thread");
 					BufferedReader input = new BufferedReader(new InputStreamReader(is));
 					String line;
 					try {
@@ -140,7 +140,7 @@ public class CodeExecutorPython extends CodeExecutor {
 			}).start();
 
 			final int exitValue = executionProzess.waitFor();
-			System.out.println("Process ended with code " + exitValue);
+			//System.out.println("Process ended with code " + exitValue);
 
 			for (ExecutorListener el : listeners) {
 				el.endExecution();

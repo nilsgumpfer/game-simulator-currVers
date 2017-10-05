@@ -70,7 +70,7 @@ public class PlotDemo {
 
 		for (double x = 0; x < 2 * Math.PI; x += 0.05) {
 			double y = Math.sin(x);
-			// System.out.println( y );
+			// //System.out.println( y );
 			plotter.add("sin2", x, y);
 			plotter.add("sin", x, y * y);
 		}
@@ -176,7 +176,7 @@ public class PlotDemo {
 				plotter.add("out", x, y);
 			}
 			if( n % 1000 == 0 & n > 0) {
-				System.out.println((double) n + " " + 4. * drin / n );
+				//System.out.println((double) n + " " + 4. * drin / n );
 				plotter2.add( (double) n, 4. * drin / n);
 				plotter2.repaint();
 				plotter.repaint();
@@ -212,7 +212,7 @@ public class PlotDemo {
 					n = n / 2;
 				plotter.add(n + nc * 100);
 			}
-			System.out.println(nc + " : " + count);
+			//System.out.println(nc + " : " + count);
 			plotter.nextVector();
 			graphic.repaint();
 		}
@@ -279,24 +279,24 @@ public class PlotDemo {
 		plotter.setYrange(-2, 12);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	    Font[] fonts = ge.getAllFonts();
-	    System.out.println( "found " + fonts.length + " fonts");
+	    //System.out.println( "found " + fonts.length + " fonts");
 		Random random = new Random();
 	    
 
-		// 10 Texte übereinander
+		// 10 Texte ï¿½bereinander
 		for (int i = 0; i < 10; i++) {
 			// Schreibe Text zentriert um Position 0,i
-			// Rückgabe ist das neu angelegte Textobjekt
+			// Rï¿½ckgabe ist das neu angelegte Textobjekt
 			TextObject t = plotter.setText(text, 0, i);
-			// nimmt den ersten Font, leite davon eine Variante in Größe 20 ab
+			// nimmt den ersten Font, leite davon eine Variante in Grï¿½ï¿½e 20 ab
 			float size = 12 + random.nextInt(16);;
 			Font testFont = fonts[(int) (Math.random() * fonts.length)]
 					.deriveFont(size);
-			// Zusätzliche Ausgabe des Fontnamens
-			System.out.println( testFont.getFontName());
-			// setzte den neuen Font für den Text
+			// Zusï¿½tzliche Ausgabe des Fontnamens
+			//System.out.println( testFont.getFontName());
+			// setzte den neuen Font fï¿½r den Text
 			t.setFont(testFont);
-			// jetzt noch Farbe ändern
+			// jetzt noch Farbe ï¿½ndern
 			t.setColor(new Color( random.nextInt(255), i*255/len, random.nextInt(255)));
 		}
 

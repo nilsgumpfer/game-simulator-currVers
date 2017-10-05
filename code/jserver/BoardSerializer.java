@@ -42,16 +42,16 @@ public class BoardSerializer {
 		b.receiveMessage("2 0xff");
 		bs.buildDocument(b);
 		String s = bs.write();
-		System.out.println(s);
-		System.out.println("Length: " + s.length());
-		System.out.println("Hash: " + s.hashCode());
+		//System.out.println(s);
+		//System.out.println("Length: " + s.length());
+		//System.out.println("Hash: " + s.hashCode());
 
 		b.receiveMessage("T 2 Hallo");
 		bs = new BoardSerializer();
 		bs.buildDocument(b);
 	    s = bs.write();
-		System.out.println("Length: " + s.length());
-		System.out.println("Hash: " + s.hashCode());
+		//System.out.println("Length: " + s.length());
+		//System.out.println("Hash: " + s.hashCode());
 
 	}
 

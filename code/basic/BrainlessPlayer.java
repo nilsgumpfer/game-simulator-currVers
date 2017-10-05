@@ -163,11 +163,11 @@ public class BrainlessPlayer extends Player {
 			}
 		}
 
-		System.out.print("{\t");
+		//System.out.print("{\t");
 		for (int i = 0; i < heatmap.length; i++) {
-			System.out.print(heatmap[i] + "\t");
+			//System.out.print(heatmap[i] + "\t");
 		}
-		System.out.println("}");
+		//System.out.println("}");
 		
 		int max = heatmap[0];
 		Move m = moves.get(0);

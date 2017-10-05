@@ -37,20 +37,20 @@ public enum SymbolType {
 		texts.put(PLUS, "Plus");
 		texts.put(VLINE, "senkrechte Linien");
 		texts.put(HLINE, "horizontale Linien");
-		texts.put(BAR, "Säulen");
+		texts.put(BAR, "Sï¿½ulen");
 		texts.put(BLOCK, "Block");
-		texts.put(UP, "schräge Linien /");
-		texts.put(DOWN, "schräge Linien \\");
+		texts.put(UP, "schrï¿½ge Linien /");
+		texts.put(DOWN, "schrï¿½ge Linien \\");
 		texts.put(TRIANGLE_LD, "Dreiecke, links unten");
 		texts.put(TRIANGLE_RD, "Dreiecke, rechts unten");
 		texts.put(TRIANGLE_LU, "Dreiecke, links oben");
 		texts.put(TRIANGLE_RU, "Dreiecke, rechts oben");
-		texts.put(DICE_1, "Würfel 1");
-		texts.put(DICE_2, "Würfel 2");
-		texts.put(DICE_3, "Würfel 3");
-		texts.put(DICE_4, "Würfel 4");
-		texts.put(DICE_5, "Würfel 5");
-		texts.put(DICE_6, "Würfel 6");
+		texts.put(DICE_1, "Wï¿½rfel 1");
+		texts.put(DICE_2, "Wï¿½rfel 2");
+		texts.put(DICE_3, "Wï¿½rfel 3");
+		texts.put(DICE_4, "Wï¿½rfel 4");
+		texts.put(DICE_5, "Wï¿½rfel 5");
+		texts.put(DICE_6, "Wï¿½rfel 6");
 		texts.put(RANDOM, "Gemischt");
 		texts.put(NONE, "Nichts");
 
@@ -114,7 +114,7 @@ public enum SymbolType {
 
 	public static SymbolType getTypeFromShortName(String shortName ) {
 		String longName = shortForm.getProperty( shortName  );
-		//System.out.println( shortName + " -> " + longName );
+		////System.out.println( shortName + " -> " + longName );
 		if( longName != null ) {
 			return getTypeFromText( longName );
 		}

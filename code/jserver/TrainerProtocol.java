@@ -130,7 +130,7 @@ public class TrainerProtocol {
 			e.printStackTrace();
 			return e.getLocalizedMessage();
 		}
-        //System.out.println( text );
+        ////System.out.println( text );
 		return text;
 	}
 

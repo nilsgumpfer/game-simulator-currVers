@@ -62,13 +62,13 @@ public class ComboBoxRenderer extends JPanel implements ListCellRenderer {
 		}
 
 		if (colors.length != strings.length) {
-			System.out.println("colors.length does not equal strings.length");
+			//System.out.println("colors.length does not equal strings.length");
 			return this;
 		} else if (colors == null) {
-			System.out.println("use setColors first.");
+			//System.out.println("use setColors first.");
 			return this;
 		} else if (strings == null) {
-			System.out.println("use setStrings first.");
+			//System.out.println("use setStrings first.");
 			return this;
 		}
 

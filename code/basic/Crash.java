@@ -10,7 +10,7 @@ public class Crash {
 		for (int x = 0; x <= 7; x++) {
 			for (int y = 7 - 1; y >= 0; y--) {
 				if (p2.board[x][y] == 0) {
-					System.out.println( "+");;
+					//System.out.println( "+");;
 				}
 
 			}
