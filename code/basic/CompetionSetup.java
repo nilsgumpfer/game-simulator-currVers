@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CompetionSetup {
 	String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
-			"JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "CCPlayer", "NGPlayer" };
+			"JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "CCPlayer", "NGPlayer", "NGKerasPlayer" };
 	List<String> playerNames = new ArrayList<>();
 	int numGames = 5;
 	int numCopies = 2;

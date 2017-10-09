@@ -6,7 +6,7 @@ import NGPlayerTools.AMoveConsultant;
 import java.util.List;
 
 /**
- * Created by Nils Gumpfer on 30.04.2017.
+ * Created by Nils on 30.04.2017.
  */
 public class NGPlayer extends Player {
 

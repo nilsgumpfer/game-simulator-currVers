@@ -14,7 +14,7 @@ public abstract class Player implements Comparable<Object> {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " " + name + " (" + (int) elo + ")";
+		return this.getClass().getSimpleName() + " " + " (" + (int) elo + ")";
 	}
 
 	public String getName() {

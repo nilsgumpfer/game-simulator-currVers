@@ -48,6 +48,7 @@ public class GUI implements ActionListener, ChangeListener {
 	static final int SLEEP_MAX = 1000;
 	static final int SLEEP_INIT = SLEEP_MAX / 2;
 	static final String version = "0.2 Mai 17";
+	private static GUI currentInstance;
 
 	private int N = 7;
 	private XSendDE xsend;
@@ -88,6 +89,8 @@ public class GUI implements ActionListener, ChangeListener {
 			}
 		}
 		buildComponents();
+
+		currentInstance = this;
 	}
 
 	public XSendDE getXsend() {
