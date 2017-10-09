@@ -47,7 +47,7 @@ public class GameStateSerializer {
         saveBoardStateAsPNG(gui, fileDestination + subFolder, fileName);
     }
 
-    public void saveBoardStateAsPNG(GUI gui, String directory, String filename){
+    public static void saveBoardStateAsPNG(GUI gui, String directory, String filename){
         gui.getBoard().getGraphic().saveImageToFile(directory + filename + ".png", false);
     }
 

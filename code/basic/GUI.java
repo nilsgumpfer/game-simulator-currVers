@@ -383,4 +383,8 @@ public class GUI implements ActionListener, ChangeListener {
         return board;
     }
 
+    public static GUI getCurrentInstance(){
+	    return currentInstance;
+    }
+
 }

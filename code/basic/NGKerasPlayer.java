@@ -8,13 +8,13 @@ import java.util.List;
 /**
  * Created by Nils Gumpfer on 08.10.2017.
  */
-public class NGKerasPlayer extends Player {
+public class NGKerasPlayer extends Player
+{
+    private IMoveConsultant moveConsultant = new KerasMoveConsultant();
 
     public NGKerasPlayer(){
         this.name = "NGKerasPlayer";
     }
-
-    private IMoveConsultant moveConsultant = new KerasMoveConsultant();
 
     @Override
     Move nextMove(Position p, List<Move> moves) {
