@@ -1,5 +1,6 @@
 package basic;
 
+import java.nio.file.FileSystemException;
 import java.util.List;
 
 import jserver.ColorNames;
@@ -54,9 +55,13 @@ public class Game {
 				// before anything is displayed or done with this move, persist current state for later analysis
                 // current state BEFORE move is saved, including PLANNED move
                 // correlation between current state and planned action will be available
-                GameStateSerializer.getInstance().serializeGameState(gui, player.getName(), ColorNames.getName(GUI.color(colorIndicator)), move);
+                try {
+                    GameStateSerializer.getInstance().serializeGameState(gui, player.getName(), ColorNames.getName(GUI.color(colorIndicator)), move);
+                } catch (FileSystemException e) {
+                    e.printStackTrace();
+                }
 
-				position.move(move);
+                position.move(move);
 				if (gui != null) {
 					Sleep.sleep(sleepTime);
 					gui.show(position);
