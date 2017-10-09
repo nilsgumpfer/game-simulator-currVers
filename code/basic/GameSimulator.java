@@ -1,6 +1,6 @@
 package basic;
 
-import ng_own.GameStateSerializer;
+import NGKerasPlayerTools.GameStateSerializer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,7 +42,7 @@ public class GameSimulator {
 	}
 
 	public Position singleGameGUI( Player[] players ) {
-        /*
+
         game = new Game();
         game.setGui(gui);
         Player winner = game.play(players);
@@ -52,28 +52,28 @@ public class GameSimulator {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
-
+        }
+        /*
         String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
                 "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
 
         int currentIndex = 0;
 
-        for(int i=0; i<100; i++)
+        for(int i=0; i<10000; i++)
         {
             Player playerRed = playerFromName("CCPlayer");
-            Player playerBlue = playerFromName(allPlayerNames[currentIndex]);
+            Player playerBlue = playerFromName("RandomPlayer"); //playerFromName(allPlayerNames[currentIndex]);
 
             Player[] myPlayers = {playerRed, playerBlue};
 
             game = new Game();
             game.setGui(gui);
 
-            System.out.println(playerRed.getName() + " vs. " + playerBlue.getName());
+            System.out.println("Game #" + i + " " + playerRed.getName() + " vs. " + playerBlue.getName());
 
             Player winner = game.play(myPlayers);
 
-            System.out.println("Winner:" + winner);
+            System.out.println("----- Winner:" + winner);
 
             try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
 
@@ -82,7 +82,7 @@ public class GameSimulator {
             if(currentIndex == allPlayerNames.length)
                 currentIndex = 0;
         }
-
+        */
 		return game.getPosition();
 	}
 

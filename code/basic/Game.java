@@ -3,7 +3,7 @@ package basic;
 import java.util.List;
 
 import jserver.ColorNames;
-import ng_own.GameStateSerializer;
+import NGKerasPlayerTools.GameStateSerializer;
 import plotter.Sleep;
 
 public class Game {
