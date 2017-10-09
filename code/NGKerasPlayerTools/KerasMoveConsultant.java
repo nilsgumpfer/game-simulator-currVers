@@ -59,7 +59,7 @@ public class KerasMoveConsultant implements IMoveConsultant {
             }
         }
 
-        System.out.println("INVALID move predicted: " + move);
+        System.out.println(">>>WARN>>> INVALID move predicted!: " + move);
         // if move is not contained, pick a valid one (most middle one)
         return possibleMoves.get(possibleMoves.size() / 2).getS();
     }
