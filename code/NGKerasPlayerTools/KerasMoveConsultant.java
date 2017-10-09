@@ -19,21 +19,24 @@ import java.util.List;
  */
 public class KerasMoveConsultant implements IMoveConsultant {
 
-    private static int IMG_WIDTH = 70;
-    private static int IMG_HEIGHT = 70;
-    private static int IMG_CHANNELS = 3;
-    private static String IMG_PATH = "currentGameboardState.png";
+    private int IMG_WIDTH = 70;
+    private int IMG_HEIGHT = 70;
+    private int IMG_CHANNELS = 3;
+    private String IMG_DIRECTORY = "";
+    private String IMG_FILENAME = "currentGameboardState";
+    private String IMG_FILEEXTENSION = ".png";
+    private String IMG_PATH = /*IMG_DIRECTORY + "\\" + */IMG_FILENAME + IMG_FILEEXTENSION;
     //private static String MOD_JSON_PATH = "simple_image_classification_fgb_architecture.json"; // Keras 2.x json-file
-    private static String MOD_JSON_PATH = "simple_image_classification_fgb_architecture_K1.json"; // Keras 1.x json-file
+    private String MOD_JSON_PATH = "simple_image_classification_fgb_architecture_K1.json"; // Keras 1.x json-file
     //private static String MOD_WEIGHTS_PATH = "simple_image_classification_fgb_weights_run3.h5"; // Keras 2.x h5-file
-    private static String MOD_WEIGHTS_PATH = "simple_image_classification_fgb_weights_K1_run1.h5"; // Keras 1.x h5-file
+    private String MOD_WEIGHTS_PATH = "simple_image_classification_fgb_weights_K1_run1.h5"; // Keras 1.x h5-file
     //TODO: currently it works only with Keras Version 1.x -> 2.x support will be available in next dl4j versions
 
     @Override
     public Move getBestPossibleMove(List<Move> possibleMoves)
     {
         // save current gameboard-state as PNG
-        GameStateSerializer.saveBoardStateAsPNG(GUI.getCurrentInstance(), "", IMG_PATH);
+        GameStateSerializer.saveBoardStateAsPNG(GUI.getCurrentInstance(), IMG_DIRECTORY, IMG_FILENAME);
 
         // use keras model to predict best move for current state (using PNG image)
         int move = getPredictionFromKerasModel();
@@ -50,10 +53,13 @@ public class KerasMoveConsultant implements IMoveConsultant {
         for(Move itm : possibleMoves)
         {
             // if so, return it
-            if(itm.getS() == move)
+            if(itm.getS() == move) {
+                System.out.println("valid move predicted: " + move);
                 return move;
+            }
         }
 
+        System.out.println("INVALID move predicted: " + move);
         // if move is not contained, pick a valid one (most middle one)
         return possibleMoves.get(possibleMoves.size() / 2).getS();
     }

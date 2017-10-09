@@ -43,6 +43,7 @@ public class GameSimulator {
 
 	public Position singleGameGUI( Player[] players ) {
 
+
         game = new Game();
         game.setGui(gui);
         Player winner = game.play(players);
@@ -53,16 +54,16 @@ public class GameSimulator {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        /*
-        String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
+
+        /*String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
                 "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
 
         int currentIndex = 0;
 
         for(int i=0; i<10000; i++)
         {
-            Player playerRed = playerFromName("CCPlayer");
-            Player playerBlue = playerFromName("RandomPlayer"); //playerFromName(allPlayerNames[currentIndex]);
+            Player playerRed = playerFromName("NGKerasPlayer");
+            Player playerBlue = playerFromName("NGPlayer"); //playerFromName(allPlayerNames[currentIndex]);
 
             Player[] myPlayers = {playerRed, playerBlue};
 
@@ -81,8 +82,8 @@ public class GameSimulator {
 
             if(currentIndex == allPlayerNames.length)
                 currentIndex = 0;
-        }
-        */
+        }*/
+
 		return game.getPosition();
 	}
 
