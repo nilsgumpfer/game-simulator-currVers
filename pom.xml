@@ -36,9 +36,12 @@
         <deeplearning4j.version>0.9.1</deeplearning4j.version>
         <nd4j.version>0.9.1</nd4j.version>
         <datavec.version>0.9.1</datavec.version>
+        <logback.version>1.2.3</logback.version>
+        <slf4j.version>1.7.25</slf4j.version>
     </properties>
 
     <dependencies>
+        <!-- Deeplearning4J -->
         <dependency>
             <groupId>org.deeplearning4j</groupId>
             <artifactId>deeplearning4j-modelimport</artifactId>
@@ -57,6 +60,7 @@
             <version>${nd4j.version}</version>
         </dependency>
 
+        <!-- nd4j-native has to be used instead of nd4j-native-platform when using SNAPSHOTS from sonatype repository -->
         <!--
         <dependency>
             <groupId>org.nd4j</groupId>
@@ -64,5 +68,22 @@
             <version>${nd4j.version}</version>
         </dependency>
         -->
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
     </dependencies>
 </project>

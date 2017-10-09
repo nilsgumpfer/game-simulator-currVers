@@ -1,6 +1,7 @@
 package basic;
 
-import NGKerasPlayerTools.GameStateSerializer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -8,22 +9,18 @@ import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class GameSimulator {
 	Random random = new Random();
 	GUI gui;
 	Game game;
 	CompetionSetup competionSetup = new CompetionSetup();
+	Logger log = LoggerFactory.getLogger("GameSimulator");
 
 	public GameSimulator() {
 		super();
 		gui = new GUI(this);
-        GameStateSerializer.getInstance().setFileDestination("C:\\Users\\Nils\\Desktop\\img\\");
 	}
 
 	public Game getGame() {
@@ -42,8 +39,7 @@ public class GameSimulator {
 	}
 
 	public Position singleGameGUI( Player[] players ) {
-
-
+        /*
         game = new Game();
         game.setGui(gui);
         Player winner = game.play(players);
@@ -55,7 +51,10 @@ public class GameSimulator {
             e.printStackTrace();
         }
 
-        /*String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
+        */
+        // make quite long competition between some players while GUI is kept active
+
+        String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
                 "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
 
         int currentIndex = 0;
@@ -63,18 +62,19 @@ public class GameSimulator {
         for(int i=0; i<10000; i++)
         {
             Player playerRed = playerFromName("NGKerasPlayer");
-            Player playerBlue = playerFromName("NGPlayer"); //playerFromName(allPlayerNames[currentIndex]);
+            Player playerBlue = playerFromName("NGPlayer");
+            //Player playerBlue = playerFromName(allPlayerNames[currentIndex]);
 
             Player[] myPlayers = {playerRed, playerBlue};
 
             game = new Game();
             game.setGui(gui);
 
-            System.out.println("Game #" + i + " " + playerRed.getName() + " vs. " + playerBlue.getName());
+            log.info("Game #" + i + " " + playerRed.getName() + " vs. " + playerBlue.getName());
 
             Player winner = game.play(myPlayers);
 
-            System.out.println("----- Winner:" + winner);
+            log.info("----- Winner:" + winner);
 
             try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
 
@@ -82,7 +82,7 @@ public class GameSimulator {
 
             if(currentIndex == allPlayerNames.length)
                 currentIndex = 0;
-        }*/
+        }
 
 		return game.getPosition();
 	}

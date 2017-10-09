@@ -2,13 +2,17 @@ package NGKerasPlayerTools;
 
 import basic.GUI;
 import basic.Move;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.nio.file.FileSystemException;
+
+import static NGKerasPlayerTools.CentralRepo.*;
 
 public class GameStateSerializer {
-    private String fileDestination = "\\img\\";
     private static GameStateSerializer instance = new GameStateSerializer();
-    private static int[] redIndex = {327,262,448,7167,1064,312,442};
+    private static int[] redIndex = {0,0,0,0,0,0,0};
     private static int[] blueIndex = {0,0,0,0,0,0,0};
-    private static int counterTEST = 0;
 
     private GameStateSerializer(){}
 
@@ -16,26 +20,49 @@ public class GameStateSerializer {
         return instance;
     }
 
-    public void serializeGameState(GUI gui, String player, String color, Move move) {
-        String playerName = player.replace(" ", ""); //condense string
-        String subFolder = playerName + color.toUpperCase() + "\\" + "col" + move.getS() + "\\";
-        String fileName = "col" + move.getS() + "_";
+    public void serializeGameState(GUI gui, String player, String color, Move move) throws FileSystemException {
+        String playerName   = player.replace(" ", ""); //condense string
+        String subFolder    = playerName + color.toUpperCase() + "\\" + "col" + move.getS();
+        String fileName     = "col" + move.getS() + "_";
+        int currIndex       = 0;
 
         if(color.equals("RED")) {
-            fileName += redIndex[move.getS()-1];
+            currIndex = redIndex[move.getS()-1];
             redIndex[move.getS()-1]++;
-            System.out.println("File Counter for Red: " + counterTEST);
-            counterTEST++;
         }
         else if(color.equals("BLUE")) {
-            fileName += blueIndex[move.getS()-1];
+            currIndex = blueIndex[move.getS()-1];
             blueIndex[move.getS()-1]++;
         }
 
-        //fileName = "" + counterTEST;
-        //counterTEST++;
+        fileName += currIndex;
 
-        // That´s more than just IMPORTANT! ..ensures all symbols are redrawn before a screenshot/export is taken
+        // check if write for specific folder just starts
+        if(currIndex == 0)
+        {
+            // if so, initialize folder first
+            File folder = new File(MOD_KERAS_DIRECTORY + "\\" +IMG_DIRECTORY + "\\" + subFolder);
+
+            // check if folder exists
+            if(folder.exists()) {
+                // if present, clear content (first delete it, then re-create it)
+
+                if(folder.listFiles() != null)
+                    for (File c : folder.listFiles())
+                        if(! c.delete())
+                            throw new FileSystemException("Deletion of file " + c.getAbsolutePath() + " failed!");
+
+                // ensure creation is successful, otherwise stop and throw exception
+                if(! folder.delete())
+                    throw new FileSystemException("Deletion of directory " + folder.getAbsolutePath() + " failed!");
+            }
+
+            // ensure creation is successful, otherwise stop and throw exception
+            if(! folder.mkdirs())
+                throw new FileSystemException("Creation of directory " + folder.getAbsolutePath() + " failed!");
+        }
+
+        // ..this here is more than important! This line of code ensures all symbols are redrawn before a screenshot/export is taken
         gui.getBoard().redrawSymbols();
 
         try {
@@ -44,14 +71,22 @@ public class GameStateSerializer {
             e.printStackTrace();
         }
 
-        saveBoardStateAsPNG(gui, fileDestination + subFolder, fileName);
+        saveBoardStateAsImage(gui, MOD_KERAS_DIRECTORY, IMG_DIRECTORY + "\\" + subFolder, fileName, IMG_FILE_EXTENSION);
     }
 
-    public static void saveBoardStateAsPNG(GUI gui, String directory, String filename){
-        gui.getBoard().getGraphic().saveImageToFile(directory + filename + ".png", false);
-    }
+    public static void saveBoardStateAsImage(GUI gui, String directory, String subFolder, String filename, String fileExtension) throws FileSystemException {
 
-    public void setFileDestination(String fileDestination) {
-        this.fileDestination = fileDestination;
+        File folder = new File(directory + "\\" + subFolder);
+
+        // check if folder does not exist
+        if(! folder.exists()) {
+            // if so, create it
+
+            // ensure creation is successful, otherwise stop and throw exception
+            if(! folder.mkdirs())
+                throw new FileSystemException("Creation of directory " + folder.getAbsolutePath() + " failed!");
+        }
+
+        gui.getBoard().getGraphic().saveImageToFile(folder.getPath() + "\\" + filename + fileExtension, false);
     }
 }

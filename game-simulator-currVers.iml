@@ -9,7 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jserver" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit5">
         <CLASSES>
@@ -21,7 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: org.deeplearning4j:deeplearning4j-modelimport:0.9.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.12" level="project" />
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-api:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-context:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: net.ericaro:neoitertools:1.0.0" level="project" />
@@ -124,5 +122,9 @@
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-native:macosx-x86_64:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-native:windows-x86_64:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.nd4j:nd4j-native:linux-ppc64le:0.9.1" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="code" level="project" />
   </component>
 </module>

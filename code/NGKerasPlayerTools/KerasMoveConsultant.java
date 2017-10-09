@@ -9,34 +9,37 @@ import org.deeplearning4j.nn.modelimport.keras.KerasModelImport;
 import org.deeplearning4j.nn.modelimport.keras.UnsupportedKerasConfigurationException;
 import org.deeplearning4j.nn.multilayer.MultiLayerNetwork;
 import org.nd4j.linalg.api.ndarray.INDArray;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystemException;
 import java.util.List;
+
+import static NGKerasPlayerTools.CentralRepo.*;
 
 /**
  * Created by Nils on 30.04.2017.
  */
 public class KerasMoveConsultant implements IMoveConsultant {
+    private Logger log = LoggerFactory.getLogger("KerasMoveConsultant");
+    private MultiLayerNetwork network;
 
-    private int IMG_WIDTH = 70;
-    private int IMG_HEIGHT = 70;
-    private int IMG_CHANNELS = 3;
-    private String IMG_DIRECTORY = "";
-    private String IMG_FILENAME = "currentGameboardState";
-    private String IMG_FILEEXTENSION = ".png";
-    private String IMG_PATH = /*IMG_DIRECTORY + "\\" + */IMG_FILENAME + IMG_FILEEXTENSION;
-    //private static String MOD_JSON_PATH = "simple_image_classification_fgb_architecture.json"; // Keras 2.x json-file
-    private String MOD_JSON_PATH = "simple_image_classification_fgb_architecture_K1.json"; // Keras 1.x json-file
-    //private static String MOD_WEIGHTS_PATH = "simple_image_classification_fgb_weights_run3.h5"; // Keras 2.x h5-file
-    private String MOD_WEIGHTS_PATH = "simple_image_classification_fgb_weights_K1_run1.h5"; // Keras 1.x h5-file
-    //TODO: currently it works only with Keras Version 1.x -> 2.x support will be available in next dl4j versions
+    public KerasMoveConsultant()
+    {
+        initializeKerasModel();
+    }
 
     @Override
     public Move getBestPossibleMove(List<Move> possibleMoves)
     {
         // save current gameboard-state as PNG
-        GameStateSerializer.saveBoardStateAsPNG(GUI.getCurrentInstance(), IMG_DIRECTORY, IMG_FILENAME);
+        try {
+            GameStateSerializer.saveBoardStateAsImage(GUI.getCurrentInstance(), MOD_KERAS_DIRECTORY, IMG_DIRECTORY, IMG_FILENAME, IMG_FILE_EXTENSION);
+        } catch (FileSystemException e) {
+            e.printStackTrace();
+        }
 
         // use keras model to predict best move for current state (using PNG image)
         int move = getPredictionFromKerasModel();
@@ -54,29 +57,31 @@ public class KerasMoveConsultant implements IMoveConsultant {
         {
             // if so, return it
             if(itm.getS() == move) {
-                System.out.println("valid move predicted: " + move);
+                log.info("valid move predicted: " + move);
                 return move;
             }
         }
 
-        System.out.println(">>>WARN>>> INVALID move predicted!: " + move);
+        log.warn("INVALID move predicted!: " + move);
+
         // if move is not contained, pick a valid one (most middle one)
         return possibleMoves.get(possibleMoves.size() / 2).getS();
     }
 
-    private int getPredictionFromKerasModel()
+    private void initializeKerasModel()
     {
         // create the model to be usable in java
-        MultiLayerNetwork network = null;
-
         try {
             // use the json-ized model exported from python to create the keras model here
             // also hand over the weights generated during training (this is the "knowledge-base" of the model)
             network = KerasModelImport.importKerasSequentialModelAndWeights(MOD_JSON_PATH, MOD_WEIGHTS_PATH);
         } catch (IOException | InvalidKerasConfigurationException | UnsupportedKerasConfigurationException e) {
-            e.printStackTrace();
+            log.error("Following Exception occured when trying to import the Keras model and weights: ", e);
         }
+    }
 
+    private int getPredictionFromKerasModel()
+    {
         // load the previously saved PNG image representing the current gameboard-state..
         NativeImageLoader imageLoader = new NativeImageLoader(IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS);
 

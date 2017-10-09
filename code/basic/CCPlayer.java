@@ -1,7 +1,7 @@
 package basic;
 
-import CCPlayerPackage.Manager;
-import CCPlayerPackage.PlayerEnum;
+import CCPlayerTools.Manager;
+import CCPlayerTools.PlayerEnum;
 
 import java.util.List;
 
