@@ -21,4 +21,4 @@ Bugfix:
 
 Features:
 
-  - first version with GUI for games and matches (requires latest version of jserver.jar)
+  - first version with GUI for games and matches (requires latest version of lib.jserver.jar)

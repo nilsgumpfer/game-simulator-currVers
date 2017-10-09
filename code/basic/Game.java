@@ -3,9 +3,9 @@ package basic;
 import java.nio.file.FileSystemException;
 import java.util.List;
 
-import jserver.ColorNames;
+import lib.jserver.ColorNames;
 import NGKerasPlayerTools.GameStateSerializer;
-import plotter.Sleep;
+import lib.plotter.Sleep;
 
 public class Game {
 	static int sleepTime = 0; //original: 500

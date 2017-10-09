@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import jserver.ColorNames;
-import jserver.XSendDE;
-import plotter.Sleep;
+import lib.jserver.ColorNames;
+import lib.jserver.XSendDE;
+import lib.plotter.Sleep;
 
 public class Position {
 	private static boolean animateCheck = false;

@@ -2,7 +2,7 @@ package basic;
 
 import java.util.List;
 
-import plotter.Sleep;
+import lib.plotter.Sleep;
 
 public class Human extends Player {
 

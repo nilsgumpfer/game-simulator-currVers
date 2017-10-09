@@ -2,6 +2,7 @@ package NGKerasPlayerTools;
 
 import basic.GUI;
 import basic.Move;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.nio.file.FileSystemException;
@@ -40,7 +41,7 @@ public class GameStateSerializer {
         if(currIndex == 0)
         {
             // if so, initialize folder first
-            File folder = new File(IMG_DIRECTORY + "\\" + subFolder);
+            File folder = new File(MOD_KERAS_DIRECTORY + "\\" +IMG_DIRECTORY + "\\" + subFolder);
 
             // check if folder exists
             if(folder.exists()) {
@@ -86,6 +87,6 @@ public class GameStateSerializer {
                 throw new FileSystemException("Creation of directory " + folder.getAbsolutePath() + " failed!");
         }
 
-        gui.getBoard().getGraphic().saveImageToFile(directory + "\\" + subFolder + "\\" + filename + fileExtension, false);
+        gui.getBoard().getGraphic().saveImageToFile(folder.getPath() + "\\" + filename + fileExtension, false);
     }
 }

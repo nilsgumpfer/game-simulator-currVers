@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -15,7 +13,6 @@ import java.util.Properties;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -30,13 +27,13 @@ import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.StyledDocument;
 
-import jserver.Board;
-import jserver.ColorNames;
-import jserver.InfoBox;
-import jserver.Utils;
-import jserver.XSendAdapter;
-import jserver.XSendDE;
-import plotter.Graphic;
+import lib.jserver.Board;
+import lib.jserver.ColorNames;
+import lib.jserver.InfoBox;
+import lib.jserver.Utils;
+import lib.jserver.XSendAdapter;
+import lib.jserver.XSendDE;
+import lib.plotter.Graphic;
 
 //Version wer  wann     was
 //.1      se   17-04    erste stabile Version
