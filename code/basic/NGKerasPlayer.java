@@ -1,28 +1,23 @@
 package basic;
 
-import NGPlayerTools.FirstMoveConsultant;
-import NGPlayerTools.AMoveConsultant;
+import NGKerasPlayerTools.IMoveConsultant;
+import NGKerasPlayerTools.KerasMoveConsultant;
 
 import java.util.List;
 
 /**
- * Created by Nils on 30.04.2017.
+ * Created by Nils Gumpfer on 08.10.2017.
  */
-public class NGPlayer extends Player {
+public class NGKerasPlayer extends Player {
 
-    public NGPlayer(){
-        this.name = "NGPlayer";
+    public NGKerasPlayer(){
+        this.name = "NGKerasPlayer";
     }
 
-    private AMoveConsultant moveConsultant = new FirstMoveConsultant();
+    private IMoveConsultant moveConsultant = new KerasMoveConsultant();
 
-    //Position p => Offers several info about the current game-status (it´s a copy, not a reference!)
-    //List<Move> moves => List of next possible moves (e.g. one column already full, etc.)
     @Override
     Move nextMove(Position p, List<Move> moves) {
-        moveConsultant.incorporateRivalMove(p.getLastMove());
-        Move move = moveConsultant.getBestPossibleMove(moves);
-        moveConsultant.incorporateOwnMove(move);
-        return move;
+        return moveConsultant.getBestPossibleMove(moves);
     }
 }
