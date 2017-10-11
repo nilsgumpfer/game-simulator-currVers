@@ -39,7 +39,7 @@ public class GameSimulator {
 	}
 
 	public Position singleGameGUI( Player[] players ) {
-        /*
+
         game = new Game();
         game.setGui(gui);
         Player winner = game.play(players);
@@ -51,7 +51,7 @@ public class GameSimulator {
             e.printStackTrace();
         }
 
-        */
+        /*
         // make quite long competition between some players while GUI is kept active
 
         String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
@@ -82,7 +82,7 @@ public class GameSimulator {
 
             if(currentIndex == allPlayerNames.length)
                 currentIndex = 0;
-        }
+        }*/
 
 		return game.getPosition();
 	}
