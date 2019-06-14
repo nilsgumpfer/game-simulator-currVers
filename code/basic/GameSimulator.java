@@ -34,16 +34,15 @@ public class GameSimulator {
     public static void main(String[] args) {
         GameSimulator simu = new GameSimulator();
 
-        //simu.singleGame();
-        //simu.competion();
-        simu.longCompetition(10000);
+        //simu.competion(); // <-- normal match
+        simu.longCompetition(10000); // <-- automatic mode
 
     }
 
     private void longCompetition(int rounds) {
         // make quite long competition between some players while GUI is kept active
 
-        String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
+        String[] rivals = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
                 "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
 
         int currentIndex = 0;
@@ -51,7 +50,7 @@ public class GameSimulator {
         for(int i=0; i<rounds; i++)
         {
             Player playerRed = playerFromName("NGKerasPlayer");
-            Player playerBlue = playerFromName(allPlayerNames[currentIndex]);
+            Player playerBlue = playerFromName(rivals[currentIndex]);
 
             Player[] myPlayers = {playerRed, playerBlue};
 
@@ -71,7 +70,7 @@ public class GameSimulator {
 
             currentIndex++;
 
-            if(currentIndex == allPlayerNames.length)
+            if(currentIndex == rivals.length)
                 currentIndex = 0;
         }
     }

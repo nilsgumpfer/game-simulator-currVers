@@ -1,7 +1,7 @@
 package basic;
 
 public class CentralRepo {
-    static String delimiter                = "/"; //set do "\\" on Windows
+    static String delimiter                = "/"; //set to "\\" on Windows
     static int     IMG_WIDTH               = 70;
     static int     IMG_HEIGHT              = 70;
     static int     IMG_CHANNELS            = 3;
@@ -13,6 +13,8 @@ public class CentralRepo {
     static String  IMG_PATH                = MOD_KERAS_DIRECTORY + delimiter + IMG_DIRECTORY + delimiter + IMG_FILENAME + IMG_FILE_EXTENSION;
     static String  MOD_JSON_PATH           = MOD_KERAS_DIRECTORY + delimiter + "KerasImageClassifier_Model_K"   + MOD_KERAS_VERSION + ".json";
     static String  MOD_WEIGHTS_PATH        = MOD_KERAS_DIRECTORY + delimiter + "KerasImageClassifier_Weights_K" + MOD_KERAS_VERSION + ".h5";
+    static String  YOUR_MODEL_PATH         = MOD_KERAS_DIRECTORY + delimiter + "MyModel" + ".json";
+    static String  YOUR_WEIGHTS_PATH       = MOD_KERAS_DIRECTORY + delimiter + "MyWeights" + ".h5";
 
     //TODO: currently it works only with Keras Version 1.x -> 2.x support will be available in next dl4j versions
 }
