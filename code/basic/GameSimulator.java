@@ -33,9 +33,47 @@ public class GameSimulator {
 
     public static void main(String[] args) {
         GameSimulator simu = new GameSimulator();
-        // simu.singleGame();
-        // simu.competion();
 
+        //simu.singleGame();
+        //simu.competion();
+        simu.longCompetition(10000);
+
+    }
+
+    private void longCompetition(int rounds) {
+        // make quite long competition between some players while GUI is kept active
+
+        String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
+                "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
+
+        int currentIndex = 0;
+
+        for(int i=0; i<rounds; i++)
+        {
+            Player playerRed = playerFromName("NGKerasPlayer");
+            Player playerBlue = playerFromName(allPlayerNames[currentIndex]);
+
+            Player[] myPlayers = {playerRed, playerBlue};
+
+            game = new Game();
+            game.setGui(gui);
+
+            gui.setP1Name(playerRed.name);
+            gui.setP2Name(playerBlue.name);
+
+            log.info("Game #" + i + " " + playerRed.getName() + " vs. " + playerBlue.getName());
+
+            Player winner = game.play(myPlayers);
+
+            log.info("----- Winner:" + winner);
+
+            try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
+
+            currentIndex++;
+
+            if(currentIndex == allPlayerNames.length)
+                currentIndex = 0;
+        }
     }
 
     public Position singleGameGUI( Player[] players ) {
@@ -51,38 +89,9 @@ public class GameSimulator {
             e.printStackTrace();
         }
 
-        /*
-        // make quite long competition between some players while GUI is kept active
 
-        String[] allPlayerNames = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
-                "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer" };
 
-        int currentIndex = 0;
 
-        for(int i=0; i<10000; i++)
-        {
-            Player playerRed = playerFromName("NGKerasPlayer");
-            Player playerBlue = playerFromName("NGPlayer");
-            //Player playerBlue = playerFromName(allPlayerNames[currentIndex]);
-
-            Player[] myPlayers = {playerRed, playerBlue};
-
-            game = new Game();
-            game.setGui(gui);
-
-            log.info("Game #" + i + " " + playerRed.getName() + " vs. " + playerBlue.getName());
-
-            Player winner = game.play(myPlayers);
-
-            log.info("----- Winner:" + winner);
-
-            try {Thread.sleep(2000);} catch (InterruptedException e) {e.printStackTrace();}
-
-            currentIndex++;
-
-            if(currentIndex == allPlayerNames.length)
-                currentIndex = 0;
-        }*/
 
         return game.getPosition();
     }

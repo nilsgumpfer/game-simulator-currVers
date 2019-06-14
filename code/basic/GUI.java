@@ -52,6 +52,15 @@ public class GUI implements ActionListener, ChangeListener {
 	private GameSimulator gameSimulator;
 	private Board board;
 	private boolean verbose = true;
+
+	public void setP1Name(String p1Name) {
+		this.p1Name = p1Name;
+	}
+
+	public void setP2Name(String p2Name) {
+		this.p2Name = p2Name;
+	}
+
 	private String p1Name;
 	private String p2Name;
 	private JButton startButton = new JButton("Spiel");
