@@ -1,8 +1,5 @@
 package basic;
 
-import NGKerasPlayerTools.IMoveConsultant;
-import NGKerasPlayerTools.KerasMoveConsultant;
-
 import java.util.List;
 
 /**

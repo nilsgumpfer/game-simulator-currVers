@@ -4,7 +4,6 @@ import java.nio.file.FileSystemException;
 import java.util.List;
 
 import lib.jserver.ColorNames;
-import NGKerasPlayerTools.GameStateSerializer;
 import lib.plotter.Sleep;
 
 public class Game {
