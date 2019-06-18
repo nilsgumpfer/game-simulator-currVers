@@ -72,8 +72,11 @@ public class BlockerPlayer extends Player {
         if (lastFieldCounter >= 4){
             move = moves.size()/2;
         }
-        if(move > 6){
-             return 0;
+     //  edited: Fehler bei BlockerPlayer vs SucherSE
+        //    if(move > 6){
+        //     return 0;
+        if(move > moves.size()-1){
+            return moves.size()-1;
         }else if(move < 0){
             return 0;
         }else{
