@@ -43,13 +43,13 @@ public class GameSimulator {
         // make quite long competition between some players while GUI is kept active
 
         String[] rivals = { "RandomPlayer", "FirstPlayer", "MiddlePlayer", "SeqPlayer", "SucherSE",
-                "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "CCPlayer" };
+                "JFBR15Player", "BrainlessPlayer", "BlockerPlayer", "TobiasKohlPlayer", "NGPlayer", "CCPlayer" };
 
         int currentIndex = 0;
 
         for(int i=0; i<rounds; i++)
         {
-            Player playerRed = playerFromName("NGPlayer");
+            Player playerRed = playerFromName("MyAIPlayer");
             Player playerBlue = playerFromName(rivals[currentIndex]);
 
             Player[] myPlayers = {playerRed, playerBlue};
