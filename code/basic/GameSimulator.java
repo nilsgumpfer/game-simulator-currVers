@@ -76,7 +76,6 @@ public class GameSimulator {
     }
 
     public Position singleGameGUI( Player[] players ) {
-
         game = new Game();
         game.setGui(gui);
         Player winner = game.play(players);
@@ -87,11 +86,7 @@ public class GameSimulator {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
-
-
-
+        
         return game.getPosition();
     }
 
