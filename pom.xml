@@ -36,7 +36,7 @@
         <deeplearning4j.version>LATEST</deeplearning4j.version>
         <nd4j.version>LATEST</nd4j.version>
         <datavec.version>LATEST</datavec.version>
-        <logback.version>LATEST</logback.version>
+        <logback.version>1.2.0</logback.version>
         <slf4j.version>LATEST</slf4j.version>
     </properties>
 
